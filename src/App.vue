@@ -23,7 +23,7 @@
 
           <template slot="top-row" slot-scope="{ fields }">
             <td v-for="field in fields" :key="field.key">
-              <div v-if="filterRow.indexOf(field.label) >= 0">
+              <div v-if="filterRow.indexOf(field.key) >= 0">
                 <b-form-input
                   type="text"
                   :placeholder="field.label"
@@ -53,7 +53,7 @@ export default {
     headers: ["name", "capital", "region", "flag"],
     items: "",
     loading: true,
-    filterRow: ["Capital"],
+    filterRow: ["capital"],
     filters: {
       all: "",
       name: "",
@@ -76,28 +76,32 @@ export default {
     getCountries() {
       this.$axios.get("/all").then((res) => {
         this.items = res.data;
-    //  this.filteredItems = res.data;
+        //  this.filteredItems = res.data;
         this.loading = false;
-      
       });
     },
-
- 
   },
-
-
 
   computed: {
     filteredItems() {
-      if (this.loading) 
-      return this.emptyItem;
+      if (this.loading) return this.emptyItem;
 
-
-   
       let filterByColumn = true;
       let filtered = [{}];
 
       if (this.filters.all != "") filterByColumn = false;
+
+      function getObjectValuesWithFilter(item, filterCriteria) {
+        let trueCount = 0;
+        Object.values(item).some((key) => {
+          if (typeof key != "object") {
+            if (String(key).toLowerCase().includes(filterCriteria)) trueCount++;
+          } else {
+            trueCount += getObjectValuesWithFilter(key, filterCriteria);
+          }
+        });
+        return trueCount;
+      }
 
       if (filterByColumn) {
         filtered = this.items.filter((item) => {
@@ -110,19 +114,18 @@ export default {
       } else {
         filtered = [{}];
 
-
-        filtered= this.items.filter((item) => {
-          for (var key in item) {
-            if (String(item[key]).toLowerCase().includes(this.filters.all.toLowerCase())) 
-              return true;
-              //filtered.push(item);
-              
-            
-          }
+        filtered = this.items.filter((item) => {
+          return Object.values(item).some((key) => {
+            let trueCount = 0;
+            trueCount += getObjectValuesWithFilter(
+              key,
+              this.filters.all.toLowerCase()
+            );
+  
+            return trueCount > 0 ? true : false;
+          });
         });
       }
-
-
 
       return filtered.length > 0 ? filtered : this.emptyItem;
     },
