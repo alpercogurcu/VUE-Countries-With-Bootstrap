@@ -101,3 +101,4 @@ burada ise fonksiyondan gelen değerler mevcut item'in trueCount değerine eklen
 
 
 
+
