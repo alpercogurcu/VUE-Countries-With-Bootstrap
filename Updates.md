@@ -1,8 +1,8 @@
 ## Güncelleme Açıklamaları
 
-[Versiyon 0.1.1 - getObjectValuesWithFilter()](#guncelleme-0-1-1)<br/>
-[Versiyon 0.1.2 - Fixed getObjectValuesWithFilter()](#guncelleme-0-1-2)<br/>
-[Versiyon 0.1.3 - Dropdown Filter Area](#guncelleme-0-1-3)<br/>
+[Version 0.1.1 - getObjectValuesWithFilter()](#guncelleme-0-1-1)<br/>
+[Version 0.1.2 - Fixed getObjectValuesWithFilter()](#guncelleme-0-1-2)<br/>
+[Version 0.1.3 - Dropdown Filter Area](#guncelleme-0-1-3)<br/>
 
 <a name="guncelleme-0-1-1"></a>
 ## GÜNCELLEME 0.1.1
