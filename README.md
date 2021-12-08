@@ -9,7 +9,8 @@
  ## Tablo Başlıkları nasıl düzenlenir?
  Çekilen verileri `headers: ["name", "capital", "region", "flag"]` dizisi altında JSON'dan gelen objelerin başlıklarına göre tablolar. 
  
- ## <strike> Arama Sütunları nasıl düzenlenir? </strike>
+ ## <strike> Arama Sütunları nasıl düzenlenir? </strike> 
+ [Version 0.1.3 - Dropdown Filter Area](https://github.com/alpercogurcu/VUE-Countries-With-Bootstrap/blob/main/Updates.md#güncelleme-013)<br/>
  <strike> 
  Başlıklarda arama kutularını aktifleştirebilmek için  ` filterRow: ["capital"] ` dizisi içerisinde header'da yer alan keyler belirtilir
  Daha sonrasında ise 
