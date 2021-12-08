@@ -93,13 +93,18 @@ export default {
 
       function getObjectValuesWithFilter(item, filterCriteria) {
         let trueCount = 0;
-        Object.values(item).some((key) => {
-          if (typeof key != "object") {
-            if (String(key).toLowerCase().includes(filterCriteria)) trueCount++;
-          } else {
-            trueCount += getObjectValuesWithFilter(key, filterCriteria);
-          }
-        });
+        if (typeof item == "object") {
+          Object.values(item).some((key) => {
+            if (typeof key != "object") {
+              if (String(key).toLowerCase().includes(filterCriteria))
+                trueCount++;
+            } else {
+              trueCount += getObjectValuesWithFilter(key, filterCriteria);
+            }
+          });
+        } else {
+          if (String(item).toLowerCase().includes(filterCriteria)) trueCount++;
+        }
         return trueCount;
       }
 
@@ -121,7 +126,7 @@ export default {
               key,
               this.filters.all.toLowerCase()
             );
-  
+
             return trueCount > 0 ? true : false;
           });
         });
