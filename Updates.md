@@ -1,6 +1,10 @@
 ## Güncelleme Açıklamaları
 
+[Versiyon 0.1.1 - getObjectValuesWithFilter()](#guncelleme-0-1-1)<br/>
+[Versiyon 0.1.2 - Fixed getObjectValuesWithFilter()](#guncelleme-0-1-2)<br/>
+[Versiyon 0.1.3 - Dropdown Filter Area](#guncelleme-0-1-3)<br/>
 
+<a name="guncelleme-0-1-1"></a>
 ## GÜNCELLEME 0.1.1
 
 `<div v-if="filterRow.indexOf(field.key) >= 0">` alanı daha önceden field.Label ile eşleşiyor mu diye kontrol ediyordu ve filterRow dizisi içerisinde Label'a uygun formatla saklanıyordu fakat Caption / Label değiştiğinde sorunlara yol açabileceği gözlemlendi. 
@@ -73,6 +77,7 @@ burada ise fonksiyondan gelen değerler mevcut item'in trueCount değerine eklen
 
 <hr />
 
+<a name="guncelleme-0-1-2"></a>
 ## GÜNCELLEME 0.1.2
 
 ### getObjectValuesWithFilter()
@@ -108,7 +113,7 @@ A
 ```
 olarak çıktı vermekteydi, fixlendi. 
 
-
+<a name="guncelleme-0-1-3"></a>
 ## Güncelleme 0.1.3
 
 Sütun bazlı filtrelemeler için dinamik aç/kapat alanlar eklendi.
