@@ -26,7 +26,11 @@
 ` filters.all` nesnesi spesifiktir. JSON içerisindeki bütün key'lerde arama yapar. 
  
 
+## Güncellemeler
 
+[Version 0.1.1 - getObjectValuesWithFilter()](https://github.com/alpercogurcu/VUE-Countries-With-Bootstrap/blob/main/Updates.md#güncelleme-011)<br/>
+[Version 0.1.2 - Fixed getObjectValuesWithFilter()](https://github.com/alpercogurcu/VUE-Countries-With-Bootstrap/blob/main/Updates.md#güncelleme-012)<br/>
+[Version 0.1.3 - Dropdown Filter Area](https://github.com/alpercogurcu/VUE-Countries-With-Bootstrap/blob/main/Updates.md#güncelleme-013)<br/>
 
 
 
