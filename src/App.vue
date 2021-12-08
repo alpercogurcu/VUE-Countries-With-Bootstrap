@@ -1,11 +1,46 @@
 <template>
   <div id="app">
     <div>
-      <b-form-input
-        type="text"
-        placeholder="Tüm değerlerde ara"
-        v-model="filters.all"
-      ></b-form-input>
+      <b-card bg-variant="light">
+        <b-row>
+          <b-col cols="11" >
+            <b-form-input
+              type="text"
+              placeholder="Tüm değerlerde ara"
+              v-model="filters.all"
+            ></b-form-input>
+          </b-col>
+          <b-col cols="1" class="col-auto">
+            
+            <b-dropdown
+              variant="link"
+              toggle-class="text-decoration-none"
+              no-caret
+              dropleft
+            >
+              <template #button-content>
+                <b-icon icon="gear-fill" aria-hidden="true"></b-icon>
+              </template>
+
+              <b-dropdown-group header="Filtrelenecek Alanlar" class="small">
+                <div v-for="header in headers" :key="header">
+                  <b-dropdown-item @click="SelectedFilterRowsItem(header)">
+                    <b-icon
+                      :icon="
+                        filterRow.indexOf(header) != -1 ? 'check' : 'blank'
+                      "
+                      aria-hidden="true"
+                    ></b-icon>
+                    {{ header }}
+                  </b-dropdown-item>
+                </div>
+              </b-dropdown-group>
+            </b-dropdown>
+          
+          </b-col>
+        </b-row>
+      </b-card>
+
       <div class="TableClass">
         <b-table
           striped
@@ -79,6 +114,15 @@ export default {
         //  this.filteredItems = res.data;
         this.loading = false;
       });
+    },
+
+    SelectedFilterRowsItem(headerName) {
+      if (this.filterRow.indexOf(headerName) != -1) {
+        this.filterRow.splice(this.filterRow.indexOf(headerName), 1);
+        this.filters[headerName] = '';
+      } else {
+        this.filterRow.push(headerName);
+      }
     },
   },
 
