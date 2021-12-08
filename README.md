@@ -9,7 +9,8 @@
  ## Tablo Başlıkları nasıl düzenlenir?
  Çekilen verileri `headers: ["name", "capital", "region", "flag"]` dizisi altında JSON'dan gelen objelerin başlıklarına göre tablolar. 
  
- ## Arama Sütunları nasıl düzenlenir? 
+ ## <strike> Arama Sütunları nasıl düzenlenir? </strike>
+ <strike> 
  Başlıklarda arama kutularını aktifleştirebilmek için  ` filterRow: ["capital"] ` dizisi içerisinde header'da yer alan keyler belirtilir
  Daha sonrasında ise 
  ```
@@ -24,7 +25,7 @@
  
  filters objesinin içerisinde aranmaya açık başlıkların "key" bilgileri tanımlanır. <br>
 ` filters.all` nesnesi spesifiktir. JSON içerisindeki bütün key'lerde arama yapar. 
- 
+ </strike> 
 
 ## Güncellemeler
 
