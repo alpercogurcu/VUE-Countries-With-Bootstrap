@@ -26,7 +26,7 @@
 ` filters.all` nesnesi spesifiktir. JSON içerisindeki bütün key'lerde arama yapar. 
  
 
-## GÜNCELLEME 0.0.1
+## GÜNCELLEME 0.1.1
 
 `<div v-if="filterRow.indexOf(field.key) >= 0">` alanı daha önceden field.Label ile eşleşiyor mu diye kontrol ediyordu ve filterRow dizisi içerisinde Label'a uygun formatla saklanıyordu fakat Caption / Label değiştiğinde sorunlara yol açabileceği gözlemlendi. 
 Label yerine artık Key değerleri ile listelenecek.
@@ -96,7 +96,42 @@ burada ise fonksiyondan gelen değerler mevcut item'in trueCount değerine eklen
 ![filterbyCapital](https://user-images.githubusercontent.com/44155358/145020584-3c26bcf1-9a75-457c-b9d3-45133532b66c.png)
 
 
+<hr />
 
+## GÜNCELLEME 0.1.2
+
+### getObjectValuesWithFilter()
+
+```js
+function getObjectValuesWithFilter(item, filterCriteria) {
+        let trueCount = 0;
+        if (typeof item == "object") {
+          Object.values(item).some((key) => {
+            if (typeof key != "object") {
+              if (String(key).toLowerCase().includes(filterCriteria))
+                trueCount++;
+            } else {
+              trueCount += getObjectValuesWithFilter(key, filterCriteria);
+            }
+          });
+        } else {
+          if (String(item).toLowerCase().includes(filterCriteria)) trueCount++;
+        }
+        return trueCount;
+      }
+```
+
+`getObjectValuesWithFilter()` fonksiyonu güncellendi. <br />
+Obje olmayan gelen değerleri (örnek: Ankara ) `Object.values(item).some((key) => {}` bloğuna girdiği zaman
+```
+A
+N
+K
+A
+R
+A
+```
+olarak çıktı vermekteydi, fixlendi. 
 
 
 
